@@ -25,7 +25,7 @@ function on_location(position){
 	var loc = new MM.Location(position.coords.latitude, position.coords.longitude);
 
 	var coord = mm.locationCoordinate(loc);
-	coord = coord.zoomTo(18);
+	coord = coord.zoomTo(mapzen_zoom_level);
 	
 	var url = mm.getTileUrl(coord);
 	fetch_data(url);

@@ -1,1 +1,2 @@
 var mapzen_apikey='***';	// https://mapzen.com/developers
+var mapzen_zoom_level=16;

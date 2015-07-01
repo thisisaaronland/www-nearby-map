@@ -2,7 +2,7 @@
 
 A simple web application that used the [Mapzen Vector Tile
 Service](https://mapzen.com/projects/vector-tiles) to tell you what features in
-OpenStreetMap are nearby.
+OpenStreetMap are nearby (at zoom level 16).
 
 ## Usage
 
