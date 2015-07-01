@@ -1,6 +1,6 @@
 # www-nearby-map
 
-A simple web application that used the [Mapzen Vector Tile
+A simple web application that uses the [Mapzen Vector Tile
 Service](https://mapzen.com/projects/vector-tiles) to tell you what features in
 OpenStreetMap are nearby (at zoom level 16).
 
