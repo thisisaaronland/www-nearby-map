@@ -14,3 +14,7 @@ and easy to get by visiting: https://mapzen.com/developers
 inside the file and replace the placeholder API key with your own.
 
 3) Open `www/index.html` in your web browser. Walk around. Repeat.
+
+## See also
+
+* [Mapzen](http://www.mapzen.com)
