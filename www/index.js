@@ -1,5 +1,5 @@
 var MM = com.modestmaps;
-var mm = new MM.TemplatedMapProvider('https://vector.mapzen.com/osm/all/{Z}/{X}/{Y}.json?api_key=' + mapzen_apikey);	// see also: config.js
+var provider = new MM.TemplatedMapProvider('https://vector.mapzen.com/osm/all/{Z}/{X}/{Y}.json?api_key=' + mapzen_apikey);	// see also: config.js
 
 var last_url = undefined;	// please don't make me a global... maybe... does it really matter?
 
@@ -24,10 +24,10 @@ function on_location(position){
 
 	var loc = new MM.Location(position.coords.latitude, position.coords.longitude);
 
-	var coord = mm.locationCoordinate(loc);
+	var coord = provider.locationCoordinate(loc);
 	coord = coord.zoomTo(mapzen_zoom_level);
 	
-	var url = mm.getTileUrl(coord);
+	var url = provider.getTileUrl(coord);
 	fetch_data(url);
 }
 
