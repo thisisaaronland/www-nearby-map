@@ -1,5 +1,7 @@
 var MM = com.modestmaps;
-var provider = new MM.TemplatedMapProvider('https://vector.mapzen.com/osm/all/{Z}/{X}/{Y}.json?api_key=' + mapzen_apikey);	// see also: config.js
+var data_provider = new MM.TemplatedMapProvider('https://vector.mapzen.com/osm/all/{Z}/{X}/{Y}.json?api_key=' + mapzen_apikey);	// see also: config.js
+
+var raster_provider = new MM.TemplatedMapProvider('http://tile.stamen.com/toner-background/{Z}/{X}/{Y}.jpg');
 
 var last_url = undefined;	// please don't make me a global... maybe... does it really matter?
 
@@ -24,15 +26,25 @@ function on_location(position){
 
 	var loc = new MM.Location(position.coords.latitude, position.coords.longitude);
 
-	var coord = provider.locationCoordinate(loc);
+	var coord = data_provider.locationCoordinate(loc);
 	coord = coord.zoomTo(mapzen_zoom_level);
 	
-	var url = provider.getTileUrl(coord);
-	fetch_data(url);
+	var data_url = data_provider.getTileUrl(coord);
+	var map_url = raster_provider.getTileUrl(coord);
+
+	show_map(map_url);
+	fetch_data(data_url);
 }
 
 function on_not_location(){
 	console.log("SAD");
+}
+
+function show_map(url){
+
+	 var m = document.getElementById("map");
+	 m.setAttribute("src", url);
+	 m.setAttribute("style", "display:inline");
 }
 
 function fetch_data(url){
@@ -55,7 +67,7 @@ function on_data(){
 	data = JSON.parse(this.responseText);
 
 	var html = "";
-	html += "<ul>";
+	html += '<ul id="nearby-items">';
 	
 	for (k in data){
 		
@@ -63,18 +75,20 @@ function on_data(){
 		var count = features.length;
 		
 		if (count > 1){
-			html += "<li>" + count + " " + k + "</li>";
+			html += '<li><span class="count">' + count + '</span> ' + k + '</li>';
 		}
 		
 		else if (count == 1){
-			html += "<li>one " + k + "</li>";
+			html += '<li><span class="count">one</span> ' + k + '</li>';
 		}
 		
 		else {
-			html += "<li>no " + k + "</li>";
+			html += '<li><span class="no-count">no</span> ' + k + '</li>';
 		}
 	}
 	
+	html += '</ul>';
+
 	var n = document.getElementById("nearby");
 	n.innerHTML = html;
 }
