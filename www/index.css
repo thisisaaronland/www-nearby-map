@@ -1,0 +1,38 @@
+body {
+    font-family: sans-serif;
+    line-height:1.5em;
+}
+
+#map {
+    border: solid 5px #000;
+}
+
+#nearby-items li {
+    display: inline;
+    font-weight: 700;
+}
+
+#nearby-items {
+    margin: 0;
+    padding: 0;
+    max-width:256px;
+    margin-top:1.25em;
+}
+
+#nearby-items li:after {
+    content: " and ";
+    font-size:small;
+    font-weight: 100;
+}
+
+#nearby-items li:last-child:after {
+    content: " ";
+}
+
+.count {
+    font-weight:100;
+}
+
+.no-count {
+    font-weight: 100;
+}

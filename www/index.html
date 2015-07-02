@@ -1,12 +1,23 @@
+<!DOCTYPE html> 
 <html>
   <head>
-    <title>walking map</title>
+    <title>nearby map</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="referrer" content="origin">
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
     <script type="text/javascript" src="modestmaps.min.js"></script>
     <script type="text/javascript" src="config.js"></script>
     <script type="text/javascript" src="index.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css" />
   </head>
   <body onload="init();">
     <h2>You are near</h2>
+    <img src="" height="256" width="256" id="map" style="display:none;"/>
     <div id="nearby">Ummm... I am waiting to find out</div>
  </body>
 </html>  
